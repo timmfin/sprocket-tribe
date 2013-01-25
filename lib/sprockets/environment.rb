@@ -14,8 +14,8 @@ module Sprockets
     #
     #     env = Environment.new(Rails.root)
     #
-    def initialize(root = ".")
-      @trail = Hike::Trail.new(root)
+    def initialize(root = ".", options = {})
+      @trail = Hike::Trail.new(root, { :must_include_parent => options[:must_include_parent] })
 
       self.logger = Logger.new($stderr)
       self.logger.level = Logger::FATAL

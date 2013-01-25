@@ -591,6 +591,31 @@ class TestEnvironment < Sprockets::TestCase
   end
 end
 
+class TestEnvironmentWhenMustIncludeParent < Sprockets::TestCase
+
+  def new_environment
+    Sprockets::Environment.new(".", { :must_include_parent => true }) do |env|
+      env.append_path(fixture_path('default'))
+      env.cache = {}
+      yield env if block_given?
+    end
+  end
+
+  def setup
+    @env = new_environment
+  end
+
+  test "resolve in environment with must_include_parent" do
+    assert_equal fixture_path('default/gallery.js'),
+      @env.resolve("default/gallery.js").to_s
+    assert_equal fixture_path('default/gallery.js'),
+      @env.resolve(Pathname.new("default/gallery.js")).to_s
+    assert_equal fixture_path('default/coffee/foo.coffee'),
+      @env.resolve("default/coffee/foo.js").to_s
+  end
+
+end
+
 class TestIndex < Sprockets::TestCase
   include EnvironmentTests
 
