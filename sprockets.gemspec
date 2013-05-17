@@ -6,6 +6,7 @@ Gem::Specification.new do |s|
   s.version = Sprockets::VERSION
   s.summary = "Rack-based asset packaging system"
   s.description = "Sprockets is a Rack-based asset packaging system that concatenates and serves JavaScript, CoffeeScript, CSS, LESS, Sass, and SCSS."
+  s.license = "MIT"
 
   s.files = Dir["README.md", "LICENSE", "lib/**/*.rb"]
   s.executables = ["sprockets"]
@@ -17,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "closure-compiler"
   s.add_development_dependency "coffee-script", "~> 2.0"
-  s.add_development_dependency "coffee-script-source", "~> 1.2.0"
+  s.add_development_dependency "coffee-script-source", "~> 1.2"
   s.add_development_dependency "eco", "~> 1.0"
   s.add_development_dependency "ejs", "~> 1.0"
   s.add_development_dependency "execjs", "~> 1.0"
