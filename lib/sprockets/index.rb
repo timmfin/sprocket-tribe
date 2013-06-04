@@ -32,10 +32,12 @@ module Sprockets
       @postprocessors    = environment.postprocessors
       @bundle_processors = environment.bundle_processors
       @compressors       = environment.compressors
+      @must_include_parent = environment.must_include_parent
 
       # Initialize caches
       @assets  = {}
       @digests = {}
+
     end
 
     # No-op return self as index

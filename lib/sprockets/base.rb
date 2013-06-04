@@ -88,6 +88,8 @@ module Sprockets
     # Get persistent cache store
     attr_reader :cache
 
+    attr_reader :must_include_parent
+
     # Set persistent cache store
     #
     # The cache store must implement a pair of getters and

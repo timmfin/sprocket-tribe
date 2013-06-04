@@ -9,13 +9,15 @@ require 'tilt'
 
 module Sprockets
   class Environment < Base
+    
     # `Environment` should initialized with your application's root
     # directory. This should be the same as your Rails or Rack root.
     #
     #     env = Environment.new(Rails.root)
     #
     def initialize(root = ".", options = {})
-      @trail = Hike::Trail.new(root, { :must_include_parent => options[:must_include_parent] })
+      @must_include_parent = options[:must_include_parent]
+      @trail = Hike::Trail.new(root, { :must_include_parent => @must_include_parent })
 
       self.logger = Logger.new($stderr)
       self.logger.level = Logger::FATAL
